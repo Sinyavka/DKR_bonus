@@ -80,6 +80,7 @@ The graph is represented in `.pkl` format, which includes:
 1. **Graph Conversion**:
    Edges are converted to a PyTorch tensor:
    ```python
+   train_dynamic_graph_sparse = [edge[:2] for edge in train_dynamic_graph_sparse]
    edge_index = torch.tensor(train_dynamic_graph_sparse, dtype=torch.long).t()
    data = Data(edge_index=edge_index, num_nodes=num_nodes)
    ```
@@ -143,7 +144,7 @@ The graph is represented in `.pkl` format, which includes:
 |--------------|--------------------------|---------|
 | **GCN**      | SemanticGraph_delta_5    | 0.847   |
 | **GCN**      | Cora                     | 0.79    |
-| **Baseline** | Common Neighbors (CN)    | 0.70    |
+
 
 **Conclusion**:  
 GCN outperforms baseline methods such as "Common Neighbors" (CN) and achieves competitive results on both datasets.
@@ -160,12 +161,12 @@ pip install torch torch-geometric scikit-learn
 
 ### Running Training
 To execute the code:
-1. Replace `file_path` with the path to the `.pkl` dataset file.
+1. Replace my file path with the path to the `.pkl` dataset file.
 2. Run the Python script.
 
 Example:
 ```python
-python train_gcn.py
+python model_train_evaluate.py
 ```
 
 ### Expected Output
